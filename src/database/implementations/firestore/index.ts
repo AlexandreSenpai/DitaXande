@@ -3,7 +3,7 @@ import admin from 'firebase-admin'
 
 export class Firestore implements IDatabase {
 
-    private service_account = require('/mnt/e/Users/alexa/Documents/credentials/GCP/eroneko.json')
+    private service_account = require(process.env.GCP_PATH)
     public db: admin.firestore.Firestore;
 
     constructor() {

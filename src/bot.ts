@@ -1,6 +1,9 @@
 import { Client, Intents } from 'discord.js';
+
 import { database } from './database';
 import { Member } from './database/models/member.entity';
+
+import { ChangeMemberActivity } from './actions/changeMemberActivity';
 import { ChangeRole } from './actions/changeRole';
 
 const client = new Client({
@@ -14,8 +17,8 @@ const client = new Client({
 client.on('ready', async () => {
 })
 
-client.on('voiceStateUpdate', ({...rest}) => {
-  console.log(rest)
+client.on('voiceStateUpdate', async (beforeState) => {
+  await new ChangeMemberActivity().setActivityTimestamp(beforeState)
 })
 
 export const bot = client;
