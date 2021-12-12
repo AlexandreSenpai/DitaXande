@@ -1,4 +1,7 @@
 import { Client, Intents } from 'discord.js';
+import { database } from './database';
+import { Member } from './database/models/member.entity';
+import { ChangeRole } from './actions/changeRole';
 
 const client = new Client({
   intents: [
@@ -8,8 +11,7 @@ const client = new Client({
   ]
 })
 
-client.on('ready', () => {
-  console.log(`${client.user.tag} is ready.`);
+client.on('ready', async () => {
 })
 
 client.on('voiceStateUpdate', ({...rest}) => {

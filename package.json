@@ -28,7 +28,7 @@
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --coverage",
+    "test": "jest --setupFiles dotenv/config --coverage",
     "test:watch": "jest --watch"
   },
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
@@ -38,6 +38,7 @@
     "discord-api-types": "^0.25.2",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
+    "firebase-admin": "^10.0.0",
     "ts-node-dev": "^1.1.8",
     "tslib": "~2.3.1"
   },
