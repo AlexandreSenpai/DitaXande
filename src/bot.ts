@@ -1,4 +1,5 @@
 import { Client, Intents } from 'discord.js';
+import { ChangeMemberActivity } from './actions/changeMemberActivity';
 
 const client = new Client({
   intents: [
@@ -12,8 +13,8 @@ client.on('ready', () => {
   console.log(`${client.user.tag} is ready.`);
 })
 
-client.on('voiceStateUpdate', ({...rest}) => {
-  console.log(rest)
+client.on('voiceStateUpdate', (beforeState) => {
+  new ChangeMemberActivity().setActivityTimestamp(beforeState)
 })
 
 export const bot = client;
