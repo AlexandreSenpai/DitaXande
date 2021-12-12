@@ -17,8 +17,8 @@ const client = new Client({
 client.on('ready', async () => {
 })
 
-client.on('voiceStateUpdate', (beforeState) => {
-  new ChangeMemberActivity().setActivityTimestamp(beforeState)
+client.on('voiceStateUpdate', async (beforeState) => {
+  await new ChangeMemberActivity().setActivityTimestamp(beforeState)
 })
 
 export const bot = client;
