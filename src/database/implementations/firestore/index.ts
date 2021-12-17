@@ -3,12 +3,11 @@ import admin from 'firebase-admin'
 
 export class Firestore implements IDatabase {
 
-    private service_account = require(process.env.GCP_PATH)
     public db: admin.firestore.Firestore;
 
     constructor() {
         const app = admin.initializeApp({
-            credential: admin.credential.cert(this.service_account),
+            credential: process.env.environment === 'production' ? admin.credential.cert(require(process.env.GCP_PATH)) : admin.credential.applicationDefault(),
         });
         this.db = app.firestore();
     }

@@ -1,6 +1,7 @@
 import admin from 'firebase-admin';
 
 export interface Member {
+    id: string;
     user: string;
     role: {
         tier: admin.firestore.DocumentData;
