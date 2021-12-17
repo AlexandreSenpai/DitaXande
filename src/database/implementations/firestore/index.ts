@@ -7,7 +7,7 @@ export class Firestore implements IDatabase {
 
     constructor() {
         const app = admin.initializeApp({
-            credential: process.env.environment === 'production' ? admin.credential.cert(require(process.env.GCP_PATH)) : admin.credential.applicationDefault(),
+            credential: process.env.environment === 'production' ? admin.credential.applicationDefault() : admin.credential.cert(require(process.env.GCP_PATH)),
         });
         this.db = app.firestore();
     }
